@@ -7,9 +7,13 @@ import { TodoSearch } from "./components/TodoSearch";
 // import "./App.css";
 
 const todos = [
-  { text: "cortar cebolla", complete: false },
-  { text: "cortar cebolla", complete: false },
-  { text: "cortar cebolla", complete: false },
+  { text: "cortar cebolla", completed: false },
+  { text: "cortar cebolla", completed: false },
+  { text: "cortar cebolla", completed: false },
+  { text: "cortar cebolla", completed: false },
+  { text: "cortar cebolla", completed: false },
+  { text: "cortar cebolla", completed: false },
+  { text: "cortar cebolla", completed: true },
 ];
 
 function App() {
@@ -19,7 +23,7 @@ function App() {
       <TodoSearch />
       <TodoList>
         {todos.map((todo, index) => (
-          <TodoItem key={index} text={todo.text} />
+          <TodoItem key={index} text={todo.text} completed={todo.completed} />
         ))}
       </TodoList>
       <CreateTodoButton />

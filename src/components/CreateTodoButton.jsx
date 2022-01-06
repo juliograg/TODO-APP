@@ -1,7 +1,15 @@
 import React from "react";
+import "./CreateTodoButton.css";
 
 function CreateTodoButton() {
-  return <button>+</button>;
+  const handleClick = () => {
+    alert("hola");
+  };
+  return (
+    <button className="CreateTodoButton" onClick={() => handleClick()}>
+      +
+    </button>
+  );
 }
 
 export { CreateTodoButton };
