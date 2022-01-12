@@ -1,24 +1,49 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import "./TodoForm.css";
+import { TodoContext } from "../TodoContext";
 
 const TodoForm = (props) => {
+  const [todoText, setTodoText] = useState("");
+  const { addTodo, setOpenModal } = useContext(TodoContext);
+
   const onCancel = () => {
-    return 0;
+    setOpenModal(false);
   };
 
   const onAdd = (e) => {
     e.preventDefault();
-    return 0;
+    if (todoText) {
+      addTodo({ text: todoText, completed: false });
+      setOpenModal(false);
+    } else {
+      alert("add Todo in the TEXTAREA");
+    }
+  };
+
+  const handleChange = (e) => {
+    setTodoText(e.target.value);
   };
 
   return (
     <form onSubmit={onAdd}>
-      <label>....</label>
-      <textarea placeholder="TAREA QUE QUIERE AGREGAR ......." />
-      <div>
-        <button type="button" onClick={onCancel}>
+      <label>ADD NEW TO DO ... </label>
+      <textarea
+        maxLength={40}
+        onChange={handleChange}
+        placeholder="TAREA QUE QUIERE AGREGAR ......."
+        value={todoText}
+      />
+      <div className="TodoForm-buttonContainer">
+        <button
+          className="TodoForm-button TodoForm-button-cancel"
+          type="button"
+          onClick={onCancel}
+        >
           Cancelar
         </button>
-        <button type="submits">Agregar</button>
+        <button className="TodoForm-button TodoForm-button-add" type="submits">
+          Agregar
+        </button>
       </div>
     </form>
   );

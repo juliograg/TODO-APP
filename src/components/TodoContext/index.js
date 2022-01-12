@@ -35,6 +35,11 @@ const TodoProvider = (props) => {
     saveTodos(newTodos);
   };
 
+  const addTodo = (newTodo) => {
+    let newTodoList = [...todos, newTodo];
+    saveTodos(newTodoList);
+  };
+
   const deleteTodo = (key) => {
     let newTodos = [...todos];
     newTodos.splice(key, 1);
@@ -55,6 +60,7 @@ const TodoProvider = (props) => {
         searchTodos,
         openModal,
         setOpenModal,
+        addTodo,
       }}
     >
       {props.children}
